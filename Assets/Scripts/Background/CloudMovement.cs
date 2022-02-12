@@ -19,7 +19,6 @@ public class CloudMovement : MonoBehaviour
     {
         if (transform.position.x <= maxPositionX)
         {
-            Debug.Log("OKOKOK");
             positionY = Random.Range(0, 4);
             transform.position = new Vector3(startPositionX, positionY);
             speed = Random.Range(0.1f, 2f);
