@@ -28,8 +28,8 @@ public class PlayerCollider : MonoBehaviour
 
         if (other.CompareTag("Jumper"))
         {
-            Debug.Log("SAUT !");
-            gameObject.GetComponent<Rigidbody2D>().AddForce(Vector2.up*1500);
+            
+            gameObject.GetComponent<Rigidbody2D>().AddForce(Vector2.up*2500);
         }
         if (other.CompareTag("Ground"))
         {
@@ -38,7 +38,8 @@ public class PlayerCollider : MonoBehaviour
 
         if (other.CompareTag("Bonus"))
         {
-            Destroy(other);
+            Debug.Log("BONUS !");
+            Destroy(other.gameObject);
         }
        
     }
