@@ -18,6 +18,7 @@ public class PlayerMovement : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Space) && canJump)
         {
+            Debug.Log("JE SAUTE !");
             gameObject.GetComponent<Rigidbody2D>().AddForce(Vector2.up*700);
             //gameObject.transform.Translate(Vector3.up*GameplayManager.Instance.speed*5*Time.deltaTime);
         }

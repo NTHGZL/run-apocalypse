@@ -5,6 +5,8 @@ using UnityEngine;
 
 public class PlayerCollider : MonoBehaviour
 {
+
+    public GameObject shield;
     // Start is called before the first frame update
     void Start()
     {
@@ -23,23 +25,22 @@ public class PlayerCollider : MonoBehaviour
         if (other.CompareTag("Obstacle"))
         {
             GameplayManager.Instance.GameOver();
-            Debug.Log("Perdu");
         }
 
         if (other.CompareTag("Jumper"))
         {
-            
-            gameObject.GetComponent<Rigidbody2D>().AddForce(Vector2.up*2500);
+            gameObject.GetComponent<Rigidbody2D>().AddForce(Vector2.up*1500);
         }
         if (other.CompareTag("Ground"))
         {
+            
             PlayerMovement.Instance.canJump = true;
         }
 
         if (other.CompareTag("Bonus"))
         {
-            Debug.Log("BONUS !");
             Destroy(other.gameObject);
+            shield.SetActive(true);
         }
        
     }
@@ -56,7 +57,8 @@ public class PlayerCollider : MonoBehaviour
     {
         if (other.CompareTag("Ground"))
         {
-            PlayerMovement.Instance.canJump = false;
+                PlayerMovement.Instance.canJump = false;
+            
         }
     }
 }

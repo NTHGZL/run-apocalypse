@@ -76,16 +76,13 @@ public class GameplayManager : MonoBehaviour
      */
     public void GameOver()
     {
+        Time.timeScale = 0;
         StartCoroutine(SaveScore());
         
         isGameOver = true;
-        Time.timeScale = 0;
+        
         gameOverText.SetActive(true);
         
-       
-        
-        // var res =  SaveScore("Nathan");
-        // Debug.Log(res.GetType());
         
 
     }
@@ -113,8 +110,8 @@ public class GameplayManager : MonoBehaviour
         form.AddField("score", score.ToString());
         form.AddField("pseudo", pseudo);
         
-        form.AddField("createdAt", DateTime.Today.ToString());
         
+        // "https://api-scoreboard.nathangonzalez.fr/api/score"
         using (UnityWebRequest www = UnityWebRequest.Post("https://api-scoreboard.nathangonzalez.fr/api/score", form))
         {
             yield return www.SendWebRequest();
