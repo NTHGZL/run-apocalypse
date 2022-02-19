@@ -11,6 +11,7 @@ public class SettingManager : MonoBehaviour
     private void Awake()
     {
         Instance = this;
+        // Saves the nickname in the next scene
         DontDestroyOnLoad(this);
     }
 

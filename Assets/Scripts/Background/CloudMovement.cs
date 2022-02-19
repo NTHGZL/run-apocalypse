@@ -17,6 +17,8 @@ public class CloudMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        
+        // Management of cloud movement. Random speed and height after passing on the other side of the screen
         if (transform.position.x <= maxPositionX)
         {
             positionY = Random.Range(0, 4);

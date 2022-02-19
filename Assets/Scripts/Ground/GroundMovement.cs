@@ -18,6 +18,8 @@ public class GroundMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        // Replace the "ground" element after it has passed on the other side of the camera,
+        // which gives the impression of an infinite ground
         if (gameObject.transform.position.x <= maxPositionX)
         {
             transform.position = new Vector3(startPositionX, positionY);

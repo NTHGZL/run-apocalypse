@@ -48,7 +48,6 @@ public class PlayerCollider : MonoBehaviour
     {
         if (other.CompareTag("Ground"))
         {
-            
             PlayerMovement.Instance.canJump = true;
         }
     }
@@ -58,7 +57,6 @@ public class PlayerCollider : MonoBehaviour
         if (other.CompareTag("Ground"))
         {
                 PlayerMovement.Instance.canJump = false;
-            
         }
     }
 }

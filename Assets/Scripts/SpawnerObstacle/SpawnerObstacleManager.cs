@@ -30,14 +30,14 @@ public class SpawnerObstacleManager : MonoBehaviour
         
         count += Time.deltaTime;
 
-        // Défini la durée avant le prochain spawn d'obstacle 
+        // Set the duration before the next obstacle spawn 
         if (timeBeforeSpawn == 0)
         {
             timeBeforeSpawn = Random.Range(minTime, maxTime);
         }
         if (timeBeforeSpawn <= count)
         {
-            // Condition permettant de contrôler le spawn de bonus et d'obstacle sautant
+            // Condition to control bonus and jumping obstacle spawn
             if (ratio >= 4 && GameplayManager.Instance.score >= 5000)
             {
                 if (ratioBonus == 4)

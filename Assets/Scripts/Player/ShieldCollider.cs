@@ -9,10 +9,7 @@ public class ShieldCollider : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-       
-       
-        
-       
+
     }
 
     // Update is called once per frame
@@ -22,33 +19,17 @@ public class ShieldCollider : MonoBehaviour
         {
             gameObject.SetActive(false);
             lifePoint = 4;
-
         }
         
     }
-    /**
-     * Change gameplay when the shield is active
-     */
-   
-
-  
     
     private void OnTriggerEnter2D(Collider2D other)
     {
 
         if (other.CompareTag("Obstacle"))
         {
-            Debug.Log("SHIELD !");
             Destroy(other.gameObject);
             lifePoint--;
-        }
-    }
-
-    private void OnTriggerExit2D(Collider2D other)
-    {
-        if (other.CompareTag("Ground"))
-        {
-            PlayerMovement.Instance.canJump = false;
         }
     }
 }

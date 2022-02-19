@@ -44,7 +44,7 @@ public class GameplayManager : MonoBehaviour
                 speed += 0.5f;
             }
 
-           
+            // Reduces the time interval between two obstacles
             if (SpawnerObstacleManager.Instance.minTime > 0.5f)
             {
                 SpawnerObstacleManager.Instance.minTime -= 0.05f;
@@ -72,57 +72,47 @@ public class GameplayManager : MonoBehaviour
         }
     }
     /**
-     * Fonction appelée quand le joueur a perdu
+     * Function called when the player has lost
      */
     public void GameOver()
     {
         Time.timeScale = 0;
         StartCoroutine(SaveScore());
-        
         isGameOver = true;
-        
         gameOverText.SetActive(true);
-        
-        
-
     }
     /**
-     * Fonction permettant de recommencer une partie
+     * Function to restart a game
      */
     private  void Restart()
     {
         SceneManager.LoadScene(1);
         isGameOver = false;
         Time.timeScale = 1;
+        speed = 10f;
         score = 0;
     }
     
     /**
-     * Fonction permettant de sauvegarder le score en base de donnée
+     * Function communicating with the API to save the score
      */
      private IEnumerator SaveScore()
     {
         
         var form = new WWWForm();
-        Debug.Log("Sauvegarde du score...");
-        Debug.Log(score);
         var today = DateTime.Today;
         form.AddField("score", score.ToString());
         form.AddField("pseudo", pseudo);
         
-        
-        // "https://api-scoreboard.nathangonzalez.fr/api/score"
         using (UnityWebRequest www = UnityWebRequest.Post("https://api-scoreboard.nathangonzalez.fr/api/score", form))
         {
             yield return www.SendWebRequest();
             if (www.result != UnityWebRequest.Result.Success)
             {
+                // Ideally, I should have displayed an error message on the screen
                 Debug.Log(www.error);
             }
-            else
-            {
-                Debug.Log("Form upload complete!");
-            }
+            
         }
 
     }
